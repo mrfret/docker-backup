@@ -1,10 +1,10 @@
 #Install
 
-cd /home
+    cd /home
 
-sudo wget https://raw.githubusercontent.com/mrfret/docker-backup/master/rsync_backup.yml
+    sudo wget https://raw.githubusercontent.com/mrfret/docker-backup/master/rsync_backup.yml
 
-sudo ansible-playbook /home/rsync_backup.yml
+    sudo ansible-playbook /home/rsync_backup.yml
 
 # Basic Usage
 
