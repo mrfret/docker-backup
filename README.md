@@ -101,7 +101,7 @@ examples. Here is a full list of the variables, default values and uses.
        In your case  ( sudo cat /etc/timezone )
 
     BACKUP_HOLD=15
-       Remove older Backups from GDrice or GCrypt 
+       Remove older Backups from GDrive or GCrypt 
 
     SERVER_ID=docker
        if you have multiple servers, this is advantageous 
