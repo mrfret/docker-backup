@@ -35,7 +35,7 @@
     - name: 'Setting {{amg_role}} ENV'
       set_fact:
         amg_env:
-          CRON_TIME : '0 1 */7 * *'
+          CRON_TIME : '0 1 * * */7'
           CONTAINER_TIMEZONE: '{{tz.stdout}}'
           BACKUP_HOLD: '5'
           SERVER_ID: '{{serverid.stdout}}'
