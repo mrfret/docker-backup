@@ -14,7 +14,7 @@
     - name: 'Set Known Facts'
       set_fact:
         amg_role: 'rsync-backup'
-        image: 'ghcr.io/doob187/docker-backup:latest'
+        image: 'ghcr.io/mrfret/docker-backup:latest'
 
     - name: 'Register TimeZone'
       shell: 'cat /etc/timezone'

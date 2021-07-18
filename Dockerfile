@@ -1,6 +1,6 @@
-FROM lsiobase/alpine:3.13
-#THX TO Johan Swetzén <johan@swetzen.com> for Build up the basic parts
-MAINTAINER MrDoob <fuckoff@all.com>
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14-version-8e7f29f2
+#THX TO Johan Swetzén <johan@swetzen.com> and MrDoob <fuckoff@all.com> for Build up the basic parts
+MAINTAINER mrfret <fuckoff@all.com>
 
 ENV BACKUPDIR="/home" \
     ARCHIVEROOT="/backup" \
@@ -26,16 +26,19 @@ RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/community/ >> /etc/apk/reposi
         curl libxml2-utils tree pigz tzdata openntpd grep
 
 RUN \
-  curl -O https://downloads.rclone.org/v1.52.0/rclone-v1.52.0-linux-amd64.zip && \
-  unzip -q rclone-v1.52.0-linux-amd64.zip && \
-  rm -f rclone-v1.52.0-linux-amd64.zip && \
+  curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip && \
+  unzip -q rclone-current-linux-amd64.zip && \
+  rm -rf rclone-current-linux-amd64.zip && \
   cd rclone-*-linux-amd64 && \
-  cp rclone /usr/bin/
+  cp rclone /usr/bin/ && \
+  rm -rf rclone-*-linux-amd64
 
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY backup.sh /backup.sh
 ADD backup_excludes /root/backup_excludes
 RUN chmod +x /root/backup_excludes
+RUN chmod +x /backup.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
